@@ -13,7 +13,7 @@ We plan to make the code and dataset public once the manuscript is accepted.
 
 ## Citation
 
-If you use this data or code for academic research, you are encouraged to cite the following paper:
+If you use our models, data or code for academic research, you are encouraged to cite the following paper:
 
 ```
 @article{zhao2024lesnets,
