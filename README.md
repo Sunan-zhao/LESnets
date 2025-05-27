@@ -1,5 +1,6 @@
 # LESnets
-Code for *"Latent Neural PDE Solver: a reduced-order modelling framework for partial differential equations"*  [arxiv](https://arxiv.org/abs/2411.04502).
+Code for *" LESnets (Large-Eddy Simulation nets): Physics-informed neural operator for large-eddy simulation of turbu
+lence"*  [arxiv](https://arxiv.org/abs/2411.04502).
 
 
 <h3> LESnets prediction on 3D decaying homogeneous isotropic turbulence </h3>
