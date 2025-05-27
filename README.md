@@ -3,10 +3,10 @@ Code for *" LESnets (Large-Eddy Simulation nets): Physics-informed neural operat
 
 
 <h3> LESnets prediction on 3D decaying homogeneous isotropic turbulence </h3>
-<img src="(https://github.com/Sunan-zhao/LESnets/blob/main/assets/DHIT_sample5_3tau.gif)" width="600">
+<img src="https://github.com/Sunan-zhao/LESnets/blob/main/assets/DHIT_sample5_3tau.gif" width="600">
 
 
-<img src="(https://github.com/Sunan-zhao/LESnets/blob/main/assets/LESnets_model.jpg" width="720" >
+<img src="https://github.com/Sunan-zhao/LESnets/blob/main/assets/LESnets_models.jpg" width="720" >
 
 
 ## Requirements
