@@ -1,6 +1,5 @@
 # LESnets
-Code for *" LESnets (Large-Eddy Simulation nets): Physics-informed neural operator for large-eddy simulation of turbu
-lence"*  [arxiv](https://arxiv.org/abs/2411.04502).
+Code for *" LESnets (Large-Eddy Simulation nets): Physics-informed neural operator for large-eddy simulation of turbulence"*  [arxiv](https://arxiv.org/abs/2411.04502).
 
 
 <h3> LESnets prediction on 3D decaying homogeneous isotropic turbulence </h3>
@@ -44,7 +43,7 @@ To run LESnets with automatically learn SGS coefficient, use the .yaml file with
 ```bash 
 python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp05_fDNS_cslr1e5.yaml
 ```
-To run LESnets with different model parameter, use the .yaml file with different "L", "W","M";
+To run LESnets with different model parameter, use the .yaml file with different "L", "W", "M";
 
 To run LESnets with different number of initial fields, use the .yaml file with different "data";
 
