@@ -2,19 +2,52 @@
 Code for *"Latent Neural PDE Solver: a reduced-order modelling framework for partial differential equations"*  [arxiv](https://arxiv.org/abs/2411.04502).
 
 
-<div style style=”line-height: 20%” align="center">
-<h3> Models prediction on 3D decaying homogeneous isotropic turbulence </h3>
+<h3> LESnets prediction on 3D decaying homogeneous isotropic turbulence </h3>
 <img src="https://github.com/Sunan-zhao/LESnets/blob/master/DHIT_sample5_3tau.gif" width="600">
 
 
-  
-## Abstrct
-
-Acquisition of large datasets for three-dimensional (3D) partial differential equations are usually very expensive. Physics-informed neural operator (PINO) eliminates the high costs associated with generation of training datasets, and shows great potential in a variety of partial differential equations. In this work, we employ physics-informed neural operator, encoding the large-eddy simulation (LES) equations directly into the neural operator for simulating three-dimensional incompressible turbulent flows. We develop the LESnets (Large-Eddy Simulation nets) by adding large-eddy simulation equations to two different data-driven models, including Fourier neural operator (FNO) and implicit Fourier neural operator (IFNO) without using label data. Notably, by leveraging only PDE constraints to learn the spatio-temporal dynamics problem, LESnets retains the computational efficiency of data-driven approaches while obviating the necessity for data. Meanwhile, using large-eddy simulation equations as PDE constraints makes it possible to efficiently predict complex turbulence at coarse grids. We investigate the performance of the LESnets with two standard three-dimensional turbulent flows: decaying homogeneous isotropic turbulence and temporally evolving turbulent mixing layer. In the numerical experiments, the LESnets model shows a similar or even better accuracy as compared to traditional large-eddy simulation and data-driven models of FNO and IFNO. By integrating a small amount of LES data, the LESnets model is able to learn the hyperparameters of the subgrid model during the training of the neural operator. Moreover, the well-trained LESnets is significantly faster than traditional LES, and has a similar efficiency as the data-driven FNO and IFNO models. Thus, physics-informed neural operators have a strong potential for 3D nonlinear engineering applications.
+## Requirements
+- Python 3.9.13
+- Pytorch 1.12.1+cu116
+- numpy
 
 ## Datasets
+The datasets for training, testing and predicting can be downloaded at 
 
-We plan to make the code and dataset public once the manuscript is accepted. 
+## Experiments
+Please refer to the yaml file in each experiment for detailed hyperparameter settings.
+
+### 1. Decaying omogeneous isotropic turbulence(DHIT)
+To run LESnets models or neural operator models for DHIT, use, e.g.,
+```bash 
+python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp0.yaml
+```
+To run neural operator models for TML, use, e.g.,
+
+```bash 
+python train_pino.py --config_path config/DHIT/FNO_L6_W80_M12_data5000_g1_gp0.yaml
+```
+
+### 2. Turbulent mixing layer (TML)
+To run LESnets models or neural operator models for TML, use, e.g.,
+```bash 
+python train_pino.py --config_path config/TML/PI_FNO_L20_W150_M12_data2000_g0_gp0.yaml
+```
+To run neural operator models for TML, use, e.g.,
+
+```bash 
+python train_pino.py --config_path config/TML/IFNO_L20_W150_M12_data2000_g1_gp0.yaml
+```
+### 3. Automatically learn SGS coefficient and some analysis
+To run LESnets with automatically learn SGS coefficient, use the .yaml file with "cslr". e.g., 
+```bash 
+python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp05_fDNS_cslr1e5.yaml
+```
+To run LESnets with different model parameter, use the .yaml file with different "L", "W","M";
+
+To run LESnets with different number of initial fields, use the .yaml file with different "data";
+
+To run LESnets with with both data and PDE loss, use the .yaml file with different "g";
 
 
 ## Citation
