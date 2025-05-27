@@ -18,7 +18,7 @@ The datasets for training, testing and predicting can be downloaded at
 ## Experiments
 Please refer to the yaml file in each experiment for detailed hyperparameter settings.
 
-### 1. Decaying omogeneous isotropic turbulence(DHIT)
+### 1. Decaying homogeneous isotropic turbulence (DHIT)
 To run LESnets models or neural operator models for DHIT, use, e.g.,
 ```bash 
 python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp0.yaml
