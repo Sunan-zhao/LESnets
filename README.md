@@ -4,7 +4,7 @@ Code for *"Latent Neural PDE Solver: a reduced-order modelling framework for par
 
 <div style style=”line-height: 20%” align="center">
 <h3> Models prediction on 3D decaying homogeneous isotropic turbulence </h3>
-<img src="https://github.com/BaratiLab/LNS-Latent-Neural-PDE-Solver/blob/main/assets/shallow_water.gif" width="600">
+<img src="" width="600">
 
 
   
