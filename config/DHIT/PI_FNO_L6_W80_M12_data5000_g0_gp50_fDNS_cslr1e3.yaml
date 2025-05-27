@@ -1,0 +1,59 @@
+data:
+  name: DHIT # flow field type
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/decay/fDNS_decay_grid32_gap20_T11_group5000.npy'] # data path
+  added_data_type: fDNS
+  paths_2: ['/work/mae-zhaosn/PINO_3d/data/initial_data/decay/fDNS_decay_grid32_train_p20_d20_T11_group1.npy'] # LES data path
+  nv: 0.015625 # viscosity
+  offset: 0
+  dt: 0.02 # time step
+  data_res: [32, 32, 32, 11, 3] # gird resolution
+  pde_res: [32, 32, 32, 10, 3] # output resolution
+  n_data_samples: 5000 # number of samples
+  t_duration: 0.20 # total time duration
+  shuffle: True
+
+LES_model: 
+  isKnown: False
+  model_name: Smagorinsky model # SGS model name
+  SM: 
+    Cs_square: 0.01 # Smagorinsky coefficient
+  
+model:
+  name: FNO # neural operator name
+  layers: 6 # Fourier layers
+  Width: 80 # channel space 'width'
+  modes1: 12 # fourier modes in x
+  modes2: 12 # fourier modes in y
+  modes3: 12 # fourier modes in z
+  modes4: 2  # fourier modes in z
+  fc_dim: 128
+  act: gelu # activation function
+
+train:
+  loss_function_type: PI # loss function type
+  batchsize: 1
+  start_iter: 0
+  num_iter: 31 # total training iterations
+  milestones: [4000,10000,20000] # learning rate decay 
+  base_lr: 0.001 # initial learning rate
+  cs_lr: 1e-3 # initial learning rate for cs
+  scheduler_gamma: 0.1 # learning rate decay factor
+  xy_weight: 0 # data loss weight
+  cs_weight: 50 # cs loss weight
+  save_step: 5 # model saving step
+  eval_step: 20 # evaluation step
+  start_step: 25 # start evaluation step
+
+test:
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/decay/fDNS_decay_grid32_test_p20_d20_T11_group20.npy'] # test data path
+  testoffset: 0
+  n_test_samples: 20 # number of test samples
+  batchsize: 5
+  data_res: [32, 32, 32, 11, 3] 
+  pde_res: [32, 32, 32, 10, 3] 
+
+predict:
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/decay/fDNS_decay_grid32_predict_initial_group5.npy'] # predict data path
+  testoffset: 0
+  advance_steps: 25 # number of iteration steps
+  advance_time: 10 # each iteration time step

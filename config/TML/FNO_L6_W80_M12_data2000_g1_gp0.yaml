@@ -1,0 +1,56 @@
+data:
+  name: TML # flow field type
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/freeshear/3k/fDNS_train_N32_N64_gap20_6k-8k_T11_sample2000.npy'] # data path
+  nv: 0.008 # viscosity
+  offset: 0
+  dt: 0.02 # time step
+  data_res: [32, 64, 64, 11, 3] # gird resolution
+  pde_res: [32, 64, 64, 10, 3] # output resolution
+  n_data_samples: 2000 # number of samples
+  t_duration: 0.20 # total time duration
+  shuffle: True
+
+LES_model: 
+  isKnown: True
+  model_name: Smagorinsky model # SGS model name
+  SM: 
+    Cs_square: 0.001 # Smagorinsky coefficient
+  
+model:
+  name: FNO # neural operator name
+  layers: 6 # Fourier layers
+  Width: 80 # channel space 'width'
+  modes1: 12 # fourier modes in x
+  modes2: 12 # fourier modes in y
+  modes3: 12 # fourier modes in z
+  modes4: 2  # fourier modes in t
+  fc_dim: 128
+  act: gelu # activation function
+
+train:
+  loss_function_type: Data_driven # loss function type
+  batchsize: 1
+  start_iter: 0
+  num_iter: 20001 # total training iterations
+  milestones: [4000,10000] # learning rate decay 
+  base_lr: 0.001 # initial learning rate
+  cs_lr: 0.0 # initial learning rate for cs
+  scheduler_gamma: 0.1 # learning rate decay factor
+  xy_weight: 1 # data loss weight
+  cs_weight: 0 # cs loss weight
+  save_step: 5000 # model saving step
+  eval_step: 20 # evaluation step
+  start_step: 15000 # start evaluation step
+
+test:
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/freeshear/3k/fDNS_test_N32_N64_gap20_6k-8k_internel200_T11_sample50.npy'] # test 
+  testoffset: 0
+  n_test_samples: 50 # number of test samples
+  batchsize: 5
+  data_res: [32, 64, 64, 11, 3]  
+  pde_res: [32, 64, 64, 10, 3] 
+
+predict:
+  paths: ['/work/mae-zhaosn/PINO_3d/data/initial_data/freeshear/3k/fDNS_predict_N32_N64_gap20_6k_initial_sample5.npy']
+  advance_steps: 25 # number of iteration steps
+  advance_time: 10 # each iteration time step
