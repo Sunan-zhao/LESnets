@@ -23,28 +23,28 @@ Please refer to the yaml file in each experiment for detailed hyperparameter set
 ### 1. Decaying homogeneous isotropic turbulence (DHIT)
 To run LESnets models or neural operator models for DHIT, use, e.g.,
 ```bash 
-python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp0.yaml
+python train_pino.py --config config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp0.yaml
 ```
 To run neural operator models for TML, use, e.g.,
 
 ```bash 
-python train_pino.py --config_path config/DHIT/FNO_L6_W80_M12_data5000_g1_gp0.yaml
+python train_pino.py --config config/DHIT/FNO_L6_W80_M12_data5000_g1_gp0.yaml
 ```
 
 ### 2. Turbulent mixing layer (TML)
 To run LESnets models or neural operator models for TML, use, e.g.,
 ```bash 
-python train_pino.py --config_path config/TML/PI_FNO_L20_W150_M12_data2000_g0_gp0.yaml
+python train_pino.py --config config/TML/PI_FNO_L20_W150_M12_data2000_g0_gp0.yaml
 ```
 To run neural operator models for TML, use, e.g.,
 
 ```bash 
-python train_pino.py --config_path config/TML/IFNO_L20_W150_M12_data2000_g1_gp0.yaml
+python train_pino.py --config config/TML/IFNO_L20_W150_M12_data2000_g1_gp0.yaml
 ```
 ### 3. Automatically learn SGS coefficient and some analysis
 To run LESnets with automatically learn SGS coefficient, use the .yaml file with "cslr". e.g., 
 ```bash 
-python train_pino.py --config_path config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp05_fDNS_cslr1e5.yaml
+python train_pino.py --config config/DHIT/PI_FNO_L6_W80_M12_data5000_g0_gp05_fDNS_cslr1e5.yaml
 ```
 To run LESnets with different model parameter, use the .yaml file with different "L", "W", "M";
 
