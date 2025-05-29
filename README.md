@@ -15,7 +15,7 @@ Code for *" LESnets (Large-Eddy Simulation nets): Physics-informed neural operat
 - numpy
 
 ## Datasets
-The datasets for training, testing and predicting can be downloaded at 
+The datasets for training, testing and predicting can be downloaded at: [LESnets_datasets] (https://www.kaggle.com/datasets/sunanzhao123/lesnets-datasets).
 
 ## Experiments
 Please refer to the yaml file in each experiment for detailed hyperparameter settings.
